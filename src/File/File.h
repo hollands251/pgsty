@@ -19,20 +19,20 @@ typedef struct
 // Out: Returns a pointer to the new File on success. On failure, return NULL and set errno
 File * file_constructor( char * filePath )
 {
-    int fileOpenErrorNumber = NULL;
+    int fileOpenErrorNumber = 0;
 
     File * newlyConstructedFile = ( File * ) malloc( sizeof(File) );
-    newlyConstructedFile -> filePosition = NULL;
-    newlyConstructedFile -> fileDiscriptor = NULL;
-    newlyConstructedFile -> sizeOfFileInBytes = NULL;
+    //newlyConstructedFile -> filePosition;
+    //newlyConstructedFile -> fileDescriptor ;
+    //newlyConstructedFile -> sizeOfFileInBytes = ;
 
-    newlyConstructedFile -> fileDiscriptor = open( filePath , O_RDWR | O_CREAT );
+    newlyConstructedFile -> fileDescriptor = open( filePath , O_RDWR | O_CREAT );
 
-    if ( newlyConstructedFile -> fileDiscriptor == -1 )
+    if ( newlyConstructedFile -> fileDescriptor == -1 )
         return NULL;
     else
     {
-
+        return newlyConstructedFile;
     }
 
 }
@@ -56,7 +56,7 @@ int file_writeToFile( File * fileToWriteTo , char * textToWrite )
 // Out:
 char * file_readFromFile( File * fileToReadFrom , char * bufferToWriteText , int sizeOfBufferInBytes )
 {
-
+    return NULL;
 }
 
 
@@ -76,7 +76,7 @@ int file_deconstructor( File * fileToDeconstruct )
 File * _set_filePosition( File * fileToSearch )
 {
     fileToSearch -> filePosition = lseek( fileToSearch -> fileDescriptor , 0L , SEEK_CUR );
-    rewind( fileToSearch -> fileDescriptor );
+    rewind( (FILE *) fileToSearch -> fileDescriptor );
 
     if ( fileToSearch -> filePosition == -1 )
         return NULL;
@@ -96,7 +96,7 @@ File * _set_sizeOfFileInBytes( File * fileToGetSizeOf )
     
     startOfFile = fileToGetSizeOf -> fileDescriptor;
     endOfFile = lseek( fileToGetSizeOf -> fileDescriptor , 0L , SEEK_END );
-    rewind( fileToGetSizeOf -> fileDescriptor );
+    rewind( (FILE *) fileToGetSizeOf -> fileDescriptor );
 
     int numberOfBytesInFile = startOfFile - endOfFile;
 
