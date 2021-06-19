@@ -1,22 +1,29 @@
 // Andrew Hollands
 // Released under the terms of the GNU General Public Licence version 2 or later
+// OverView:
+// The File is a datatype that is meant to simplify interacting with files.
+// Files are not very complicated to work with but a layer of abstraction will help 
+// with the simplicity and intuitiveness of the code.
 
 
-typdef struct
+typedef struct
 {
-    int _fileIsOpen = NULL;
-    int canReadFile = NULL;
-    int canWriteToFile = NULL;
-    int filePosition = NULL;
-    int fileDescriptor = NULL;
+    int filePosition;
+    int fileDescriptor;
+    int sizeOfFileInBytes;
 } File;
 
 
-File * file_Constructor()
+File * file_constructor( char * filePath )
 {
-    File * fileToReturn ( File * ) = malloc( sizeof(File) );
-    return fileToReturn;
+    File * fileToReturn = ( File * ) malloc( sizeof(File) );
+
+    open
+
+    return errno;
 }
+
+
 
 
 // In:  File for writing & the text to write in it
@@ -39,9 +46,12 @@ char * file_readFromFile( File * fileToReadFrom , char * bufferToWriteText , int
 }
 
 // Returns 0 on successful deconstruction
-int file_Deconstructor( File * fileToDeconstruct )
+int file_deconstructor( File * fileToDeconstruct )
 {
-    int fileIsDeconstructed = free ( fileToClose );
+    int fileIsDeconstructed = 0;
+    free ( fileToDeconstruct );
     
     return fileIsDeconstructed;
 }
+
+
