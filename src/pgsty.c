@@ -1,8 +1,16 @@
+// External Libraries
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+
+// Internal Header Files 
+#include "File/File.h"
 
 int main ()
 {
-    printf( "hello pgsty" );
+    File * file = file_constructor( NULL );
+    int fileWasClosed = file_deconstructor( file );
+    printf( "%d\n" , fileWasClosed );
 
     return 0;
 }
