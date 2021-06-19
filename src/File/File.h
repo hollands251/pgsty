@@ -96,12 +96,12 @@ File * _set_sizeOfFileInBytes( File * fileToGetSizeOf )
     
     startOfFile = fileToGetSizeOf -> fileDescriptor;
     endOfFile = lseek( fileToGetSizeOf -> fileDescriptor , 0L , SEEK_END );
-    rewind( fileToSearch -> fileDescriptor );
+    rewind( fileToGetSizeOf -> fileDescriptor );
 
     int numberOfBytesInFile = startOfFile - endOfFile;
 
     if ( endOfFile == -1 )
-        return NULL
+        return NULL;
     else
         fileToGetSizeOf -> sizeOfFileInBytes = numberOfBytesInFile;
 
