@@ -9,6 +9,7 @@
 
 // Internal Header Files 
 #include "File/File.h"
+#include "CUnit/Basic.h"
 
 int main ()
 {
