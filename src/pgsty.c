@@ -3,9 +3,13 @@
 #include <errno.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/types.h>
 
 // Internal Header Files 
 #include "File/File.h"
+#include "CUnit/Basic.h"
 
 int main ()
 {

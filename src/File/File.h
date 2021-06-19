@@ -23,12 +23,12 @@ File * file_constructor( char * filePath )
 
     File * newlyConstructedFile = ( File * ) malloc( sizeof(File) );
     newlyConstructedFile -> filePosition = NULL;
-    newlyConstructedFile -> fileDiscriptor = NULL;
+    newlyConstructedFile -> fileDescriptor = NULL;
     newlyConstructedFile -> sizeOfFileInBytes = NULL;
 
-    newlyConstructedFile -> fileDiscriptor = open( filePath , O_RDWR | O_CREAT );
+    newlyConstructedFile -> fileDescriptor = open( filePath , O_RDWR | O_CREAT );
 
-    if ( newlyConstructedFile -> fileDiscriptor == -1 )
+    if ( newlyConstructedFile -> fileDescriptor == -1 )
         return NULL;
     else
     {
